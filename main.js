@@ -3,7 +3,7 @@
 // What algorithms do you need to implement?
 // Create some functions to store repeatable steps
 // You'll need to find a way to track the numbers pressed until the = is pressed
-// No need for chaining long calculations yet (see hard mode)
+
 
 // Button assignments
 let cButton = document.getElementById('cButton');
@@ -74,3 +74,8 @@ decimal.addEventListener('click', function() {
 cButton.addEventListener('click', function() {
   viewer.innerHTML = "";
 });
+
+eqButton.addEventListener('click', function(){
+  viewer.innerHTML = eval(viewer.innerHTML);
+
+})
