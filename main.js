@@ -56,26 +56,48 @@ num9.addEventListener('click', function() {
 num0.addEventListener('click', function() {
   viewer.innerHTML += 0;
 });
+
 divButton.addEventListener('click', function() {
-  viewer.innerHTML += "/";
+  if(viewer.innerHTML === ""){
+    viewer.innerHTML = "";
+  } else {
+    viewer.innerHTML += "/"};
 });
+
 multButton.addEventListener('click', function() {
-  viewer.innerHTML += "*";
+  if(viewer.innerHTML === ""){
+    viewer.innerHTML = "";
+  } else {
+    viewer.innerHTML += "*"};
 });
+
 subtrButton.addEventListener('click', function() {
-  viewer.innerHTML += "-";
+  if(viewer.innerHTML === ""){
+    viewer.innerHTML = "";
+  } else {
+    viewer.innerHTML += "-"};
 });
+
 plusButton.addEventListener('click', function() {
-  viewer.innerHTML += "+";
+  if(viewer.innerHTML === ""){
+    viewer.innerHTML = "";
+  } else {
+    viewer.innerHTML += "+"};
 });
+
 decimal.addEventListener('click', function() {
   viewer.innerHTML += ".";
 });
+
 cButton.addEventListener('click', function() {
   viewer.innerHTML = "";
 });
 
 eqButton.addEventListener('click', function(){
-  viewer.innerHTML = eval(viewer.innerHTML);
+  if(eval(viewer.innerHTML) != parseInt(eval(viewer.innerHTML))){
+    viewer.innerHTML = eval(viewer.innerHTML).toFixed(6);
+  } else {
+        viewer.innerHTML = eval(viewer.innerHTML);
+    }
 
 })
