@@ -1,10 +1,3 @@
-// Writing the JavaScript and interacting with the DOM is the main part of the project
-// Start small by selecting some elements
-// What algorithms do you need to implement?
-// Create some functions to store repeatable steps
-// You'll need to find a way to track the numbers pressed until the = is pressed
-
-
 // Button assignments
 let cButton = document.getElementById('cButton');
 let viewer = document.getElementById('screen');
@@ -24,6 +17,8 @@ let num0 = document.getElementById('num0');
 let decimal = document.getElementById('decimal');
 let eqButton = document.getElementById('eqButton');
 let plusButton = document.getElementById('plusButton');
+let modButton = document.getElementById('modu');
+let sqrtButton = document.getElementById('sqRt');
 // Flag to indicate that one decimal exists on display
 // let flag = false;
 // Click button to show numbers or operators on display
@@ -57,6 +52,7 @@ num9.addEventListener('click', function() {
 num0.addEventListener('click', function() {
   viewer.innerHTML += 0;
 });
+
 
 // Operator buttons have if statement to prevent them being entered first or in succession
 divButton.addEventListener('click', function() {
@@ -108,12 +104,20 @@ cButton.addEventListener('click', function() {
 // Equals button set to limit decimal output to 6 places as needed
 eqButton.addEventListener('click', function(){
   if(eval(viewer.innerHTML) != parseInt(eval(viewer.innerHTML))){
-    viewer.innerHTML = eval(viewer.innerHTML).toFixed(6);
+    viewer.innerHTML = eval(viewer.innerHTML).toFixed(3);
   } else {
         viewer.innerHTML = eval(viewer.innerHTML);
     }
 })
 
+// Add Modulus and Square Root buttons
+modButton.addEventListener('click', function() {
+  if(viewer.innerHTML === ""){
+    viewer.innerHTML = "";
+  } else if (viewer.innerHTML.endsWith("%")){
+      viewer.innerHTML = viewer.innerHTML;
+    } else {viewer.innerHTML += "%"};
+});
 
 // This code will prevent a decimal from being repeated in the same number, but doesn't allow a decimal to be used in a later number of the same equation...so it doesn't work like I wanted it to, but wanted to keep for reference.
 
