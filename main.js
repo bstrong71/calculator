@@ -24,7 +24,8 @@ let num0 = document.getElementById('num0');
 let decimal = document.getElementById('decimal');
 let eqButton = document.getElementById('eqButton');
 let plusButton = document.getElementById('plusButton');
-
+// Flag to indicate that one decimal exists on display
+// let flag = false;
 // Click button to show numbers or operators on display
 num1.addEventListener('click', function() {
   viewer.innerHTML += 1;
@@ -57,47 +58,70 @@ num0.addEventListener('click', function() {
   viewer.innerHTML += 0;
 });
 
+// Operator buttons have if statement to prevent them being entered first or in succession
 divButton.addEventListener('click', function() {
   if(viewer.innerHTML === ""){
     viewer.innerHTML = "";
-  } else {
-    viewer.innerHTML += "/"};
+  } else if (viewer.innerHTML.endsWith("/")){
+      viewer.innerHTML = viewer.innerHTML;
+    } else {viewer.innerHTML += "/";}
 });
 
 multButton.addEventListener('click', function() {
   if(viewer.innerHTML === ""){
     viewer.innerHTML = "";
-  } else {
-    viewer.innerHTML += "*"};
+  } else if (viewer.innerHTML.endsWith("*")){
+      viewer.innerHTML = viewer.innerHTML;
+    } else {viewer.innerHTML += "*"};
 });
 
 subtrButton.addEventListener('click', function() {
   if(viewer.innerHTML === ""){
     viewer.innerHTML = "";
-  } else {
-    viewer.innerHTML += "-"};
+  } else if (viewer.innerHTML.endsWith("-")){
+      viewer.innerHTML = viewer.innerHTML;
+    } else {viewer.innerHTML += "-"};
 });
 
 plusButton.addEventListener('click', function() {
   if(viewer.innerHTML === ""){
     viewer.innerHTML = "";
-  } else {
-    viewer.innerHTML += "+"};
+  } else if (viewer.innerHTML.endsWith("")){
+      viewer.innerHTML = viewer.innerHTML;
+    } else {
+      viewer.innerHTML += "+"};
 });
 
 decimal.addEventListener('click', function() {
-  viewer.innerHTML += ".";
+  if(viewer.innerHTML === "."){
+    viewer.innerHTML = ".";
+  } else if(viewer.innerHTML.endsWith(".")) {
+      viewer.innerHTML = viewer.innerHTML;
+    } else {viewer.innerHTML += ".";
+  }
 });
 
 cButton.addEventListener('click', function() {
   viewer.innerHTML = "";
 });
 
+// Equals button set to limit decimal output to 6 places as needed
 eqButton.addEventListener('click', function(){
   if(eval(viewer.innerHTML) != parseInt(eval(viewer.innerHTML))){
     viewer.innerHTML = eval(viewer.innerHTML).toFixed(6);
   } else {
         viewer.innerHTML = eval(viewer.innerHTML);
     }
-
 })
+
+
+// This code will prevent a decimal from being repeated in the same number, but doesn't allow a decimal to be used in a later number of the same equation...so it doesn't work like I wanted it to, but wanted to keep for reference.
+
+// decimal.addEventListener('click', function() {
+//   if(viewer.innerHTML === "."){
+//     viewer.innerHTML = ".";
+//   } else if((viewer.innerHTML.endsWith(".")) || (viewer.innerHTML.indexOf(".") !== -1)){
+//       viewer.innerHTML = viewer.innerHTML;
+//     } else {viewer.innerHTML += ".";
+//   }
+// });
