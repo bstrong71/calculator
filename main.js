@@ -18,39 +18,58 @@ let decimal = document.getElementById('decimal');
 let eqButton = document.getElementById('eqButton');
 let plusButton = document.getElementById('plusButton');
 let modButton = document.getElementById('modu');
-let sqrtButton = document.getElementById('sqRt');
-// Flag to indicate that one decimal exists on display
-// let flag = false;
-// Click button to show numbers or operators on display
+let sqRtButton = document.getElementById('sqRt');
+
+// Click button to show numbers or operators on display; includes square root calculator
 num1.addEventListener('click', function() {
-  viewer.innerHTML += 1;
+  if(viewer.innerHTML.endsWith("sqRt")){
+    viewer.innerHTML = Math.sqrt(1);
+  } else {viewer.innerHTML += 1;}
 });
 num2.addEventListener('click', function() {
-  viewer.innerHTML += 2;
+  if(viewer.innerHTML.endsWith("sqRt")){
+    viewer.innerHTML = Math.sqrt(2).toFixed(6);
+  } else {viewer.innerHTML += 2;}
 });
 num3.addEventListener('click', function() {
-  viewer.innerHTML += 3;
+  if(viewer.innerHTML.endsWith("sqRt")){
+    viewer.innerHTML = Math.sqrt(3).toFixed(6);
+  } else {viewer.innerHTML += 3;}
 });
 num4.addEventListener('click', function() {
-  viewer.innerHTML += 4;
+  if(viewer.innerHTML.endsWith("sqRt")){
+    viewer.innerHTML = Math.sqrt(4);
+  } else {viewer.innerHTML += 4;}
 });
 num5.addEventListener('click', function() {
-  viewer.innerHTML += 5;
+  if(viewer.innerHTML.endsWith("sqRt")){
+    viewer.innerHTML = Math.sqrt(5).toFixed(6);
+  } else {viewer.innerHTML += 5;}
 });
 num6.addEventListener('click', function() {
-  viewer.innerHTML += 6;
+  if(viewer.innerHTML.endsWith("sqRt")){
+    viewer.innerHTML = Math.sqrt(6).toFixed(6);
+  } else {viewer.innerHTML += 6;}
 });
 num7.addEventListener('click', function() {
-  viewer.innerHTML += 7;
+  if(viewer.innerHTML.endsWith("sqRt")){
+    viewer.innerHTML = Math.sqrt(7).toFixed(6);
+  } else {viewer.innerHTML += 7;}
 });
 num8.addEventListener('click', function() {
-  viewer.innerHTML += 8;
+  if(viewer.innerHTML.endsWith("sqRt")){
+    viewer.innerHTML = Math.sqrt(8).toFixed(6);
+  } else {viewer.innerHTML += 8;}
 });
 num9.addEventListener('click', function() {
-  viewer.innerHTML += 9;
+  if(viewer.innerHTML.endsWith("sqRt")){
+    viewer.innerHTML = Math.sqrt(9);
+  } else {viewer.innerHTML += 9;}
 });
 num0.addEventListener('click', function() {
-  viewer.innerHTML += 0;
+  if(viewer.innerHTML.endsWith("sqRt")){
+    viewer.innerHTML = Math.sqrt(0);
+  } else {viewer.innerHTML += 0;}
 });
 
 
@@ -104,9 +123,9 @@ cButton.addEventListener('click', function() {
 // Equals button set to limit decimal output to 6 places as needed
 eqButton.addEventListener('click', function(){
   if(eval(viewer.innerHTML) != parseInt(eval(viewer.innerHTML))){
-    viewer.innerHTML = eval(viewer.innerHTML).toFixed(3);
+    viewer.innerHTML = eval(viewer.innerHTML).toFixed(6);
   } else {
-        viewer.innerHTML = eval(viewer.innerHTML);
+      viewer.innerHTML = eval(viewer.innerHTML);
     }
 })
 
@@ -117,6 +136,10 @@ modButton.addEventListener('click', function() {
   } else if (viewer.innerHTML.endsWith("%")){
       viewer.innerHTML = viewer.innerHTML;
     } else {viewer.innerHTML += "%"};
+});
+
+sqRtButton.addEventListener('click', function() {
+    viewer.innerHTML = "sqRt";
 });
 
 // This code will prevent a decimal from being repeated in the same number, but doesn't allow a decimal to be used in a later number of the same equation...so it doesn't work like I wanted it to, but wanted to keep for reference.
